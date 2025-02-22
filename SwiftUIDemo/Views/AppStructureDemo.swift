@@ -9,20 +9,11 @@ import SwiftUI
 
 struct AppStructureDemo: View {
     @AppStorage("fontSize") private var fontSize = 16.0
-    @AppStorage("selectedTheme") private var selectedTheme = AppTheme.system
+    
     @Environment(\.openWindow) private var openWindow
     @State private var isSheetPresented = false
     
-    func theme() -> ColorScheme? {
-        switch selectedTheme {
-            case .dark:
-                return ColorScheme.dark
-            case .light:
-                return ColorScheme.light
-            default:
-                return nil
-        }
-    }
+    
     
     var body: some View {
         VStack {
@@ -49,7 +40,7 @@ struct AppStructureDemo: View {
             }
         }
         .padding()
-        .preferredColorScheme(theme())
+        
     }
 }
 

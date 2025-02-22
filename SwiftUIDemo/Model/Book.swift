@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+@Observable
+class Book {
+    var title = "A Sample Book"
+    var isAvailable = true
+}

@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ItemDetailView: View {
+    var id: UUID?
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("")
+        Button("Dismiss") {
+            dismiss()
+        }
     }
 }
 
 #Preview {
-    ItemDetailView()
+    ItemDetailView(id: UUID())
 }

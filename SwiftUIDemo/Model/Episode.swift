@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Episode {
+    var title: String
+    var showTitle: String
+    var isFavorite: Bool
+}

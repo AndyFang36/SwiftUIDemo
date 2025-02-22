@@ -13,6 +13,19 @@ struct ContentView: View {
     @State private var searchTokens: [FruitToken] = []
     @State private var scope: ProductScope = .fruit
     
+    @AppStorage("selectedTheme") private var selectedTheme = AppTheme.system
+    
+    func theme() -> ColorScheme? {
+        switch selectedTheme {
+            case .dark:
+                return ColorScheme.dark
+            case .light:
+                return ColorScheme.light
+            default:
+                return nil
+        }
+    }
+    
     var body: some View {
         NavigationSplitView {
             List(NavList.allCases, selection: $selected) { item in
@@ -25,6 +38,8 @@ struct ContentView: View {
                     AppStructureDemo().navigationTitle("App Structure")
                 case .dataAndStorage:
                     DataAndStorageDemo().navigationTitle("Data And Storage")
+                case .views:
+                    ViewsDemo().navigationTitle("Views")
             }
         }
         .searchable(
@@ -55,7 +70,7 @@ struct ContentView: View {
                 }
             }
         }
-        
+        .preferredColorScheme(theme())
     }
 }
 

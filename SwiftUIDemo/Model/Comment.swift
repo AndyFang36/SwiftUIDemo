@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Comment: Identifiable {
+    let id = UUID()
+    let user: String
+    let content: String
+}

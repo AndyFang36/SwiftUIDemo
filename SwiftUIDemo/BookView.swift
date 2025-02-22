@@ -8,11 +8,37 @@
 import SwiftUI
 
 struct BookView: View {
+    @Binding var book: Book?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        let available = book?.isAvailable ?? false
+        ScrollView {
+            Text(book?.title ?? "Here is no book.")
+            Text(available ? "Available" : "Unavailable")
+            // del
+            Button("Delete") {
+                book = nil
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.red)
+            // add
+            Button("Add") {
+                book = Book()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.green)
+            // check
+            Button("Check") {
+                book?.isAvailable = false
+            }
+            .disabled(!available)
+        }
     }
 }
 
-#Preview {
-    BookView()
+#Preview("Book View") {
+    @Previewable @State var book: Book? = Book()
+    
+    BookView(book: $book)
+        .frame(width: 500, height: 300)
 }

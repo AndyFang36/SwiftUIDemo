@@ -16,6 +16,7 @@ struct DataAndStorageDemo: View {
     
     var body: some View {
         VStack {
+            Text("xxx")
             Toggle("Favorite", isOn: $episode.isFavorite) // Bind to the Boolean.
             PlayerView(episode: episode)
         }
@@ -39,10 +40,12 @@ struct PlayButton: View{
     @Binding var isPlaying: Bool
     
     var body: some View {
-        Button(action: { self.isPlaying.toggle() }) {
+        Button(action: {withAnimation(.easeInOut(duration: 1)) {
+            self.isPlaying.toggle()
+        }}) {
             Image(systemName: isPlaying ? "pause.circle" : "play.circle")
                 .opacity(0.8)
-                .frame(width: 50, height: 50)
+                .frame(width: 80, height: 50)
                 .font(.system(size: 36))
         }
         .buttonStyle(.borderedProminent)
