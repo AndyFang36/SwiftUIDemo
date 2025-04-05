@@ -13,8 +13,6 @@ struct AppStructureDemo: View {
     @Environment(\.openWindow) private var openWindow
     @State private var isSheetPresented = false
     
-    
-    
     var body: some View {
         VStack {
             HStack {
